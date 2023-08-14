@@ -10,15 +10,17 @@ export default function Item({ task, time, selectioned, completed, id, selectTas
 
 
     return (
-        <li className={selectioned == true ? 'bg-green-500' : 'cursor-pointer'} className={completed == true ? 'bg-slate-500' : ''} onClick={() => selectTask({
-            task,
-            time,
-            selectioned,
-            completed,
-            id
-        })}>
-            <h3>{task}</h3> 
+        <li className={selectioned == true ? 'bg-green-500' : 'cursor-pointer'} className={completed == true ? 'bg-slate-500' : ''}
+            onClick={() => !completed && selectTask({
+                task,
+                time,
+                selectioned,
+                completed,
+                id
+            })}>
+            <h3>{task}</h3>
             <span>{time}</span>
+            {completed && <span aria-label="Task done">Completado</span>}
         </li>
     )
 }
